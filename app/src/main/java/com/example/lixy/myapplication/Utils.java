@@ -25,7 +25,9 @@ public class Utils {
 
     public String getIMEI(Context context){
         TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+
         String IMEI = telephonyManager.getDeviceId();
+
         Log.d(TAG,"IMEI=========" + IMEI);
         return IMEI;
     }
