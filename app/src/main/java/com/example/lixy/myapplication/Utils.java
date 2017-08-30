@@ -17,6 +17,7 @@ public class Utils {
     private final static String TAG = "Utils";
     private static Utils utils;
     public static Utils getInstance(Context context){
+        
         if (utils == null){
             utils = new Utils();
         }
