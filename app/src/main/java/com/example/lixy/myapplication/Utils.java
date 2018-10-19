@@ -2,6 +2,7 @@ package com.example.lixy.myapplication;
 
 import android.content.Context;
 import android.net.wifi.WifiManager;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.telephony.TelephonyManager;
 import android.util.Log;
@@ -43,5 +44,15 @@ public class Utils {
     @NonNull public static String notNull(@NonNull String s, String s2){
         Log.d(TAG,s.length() + "  " + s2.length());
         return null;
+    }
+
+    public static boolean getOrientationLocked(Context context){
+        int screenchange = 0;
+        try {
+            screenchange = Settings.System.getInt(context.getContentResolver(), Settings.System.ACCELEROMETER_ROTATION);
+        } catch (Settings.SettingNotFoundException e) {
+            e.printStackTrace();
+        }
+        return screenchange == 1 ? true : false;
     }
 }

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="this is a fragment"/>
+
+    <Button android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:text="show"
+        app:layout_constraintTop_toBottomOf="@+id/text"/>
+
+    <ViewStub android:id="@+id/viewStub"
+        android:inflatedId="@+id/inflatedId"
+        android:layout="@layout/layout_viewstub_content"
+        app:layout_constraintTop_toBottomOf="@id/button"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+</android.support.constraint.ConstraintLayout>

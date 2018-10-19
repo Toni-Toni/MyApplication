@@ -13,11 +13,13 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * A {@link android.preference.PreferenceActivity} which implements and proxies the necessary calls
@@ -43,33 +45,19 @@ public abstract class AppCompatPreferenceActivity extends PreferenceActivity {
         Timer timer = new Timer(true);
         Timer timer1 = new Timer();
 
-        /*timer.schedule(new TimerTask() {
+        Log.e("time","mainThread  " + Thread.currentThread().getId());
+        timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                Log.e("time","time");
+                Log.e("time","time  " + Thread.currentThread().getId());
             }
         },2000,2000);
         timer1.schedule(new TimerTask() {
             @Override
             public void run() {
-                Log.i("time1","time1");
+                Log.i("time1","time1   " + Thread.currentThread().getId());
             }
-        },2000,2000);*/
-
-        final ThreadTest threadTest = new ThreadTest();
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                threadTest.add();
-            }
-        }).start();
-
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                threadTest.get();
-            }
-        }).start();
+        },2000,2000);
     }
 
     @Override

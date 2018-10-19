@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="10dp">
+
+    <LinearLayout android:id="@+id/ll1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layoutMode="clipBounds"
+        android:background="@drawable/b1"
+        android:padding="10dp"
+        android:orientation="vertical">
+        <com.example.lixy.myapplication.view.CustomView
+            android:id="@+id/customView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="this is CustomView 1"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="button"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/ll1"
+        android:layout_marginTop="10dp"
+        android:divider="@color/colorAccent"
+        android:dividerPadding="2dp"
+        android:showDividers="middle|beginning|end"
+        android:layoutMode="opticalBounds"
+        android:background="@drawable/b1"
+        android:padding="10dp"
+        android:orientation="vertical">
+        <com.example.lixy.myapplication.view.CustomView
+            android:id="@+id/customView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="this is CustomView 2"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="button"/>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

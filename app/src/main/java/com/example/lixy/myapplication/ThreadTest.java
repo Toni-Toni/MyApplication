@@ -16,6 +16,8 @@ public class ThreadTest {
     private String LOG = ThreadTest.class.getSimpleName();
     private byte[] lock = new byte[0];
 
+    private static ThreadLocal<Long> threadLocal = new ThreadLocal<>();
+
     volatile private List<Integer>  list = new ArrayList<>();
 
     public synchronized void get() {
@@ -41,6 +43,57 @@ public class ThreadTest {
                 }
             }
         }
+    }
+
+    public static long threadLocal(){
+
+        threadLocal.set(System.currentTimeMillis());
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i < 5; i++) {
+                    if (threadLocal.get() == null){
+                        threadLocal.set(10L);
+                    }else {
+                        threadLocal.set(threadLocal.get() + 1);
+                    }
+                    System.out.println("Thread1==" + threadLocal.get());
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }).start();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i < 5; i++) {
+                    if (threadLocal.get() == null){
+                        threadLocal.set((long) i);
+                    }else {
+                        threadLocal.set(threadLocal.get() + 1);
+                    }
+                    System.out.println("Thread2==" + threadLocal.get());
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }).start();
+
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return (System.currentTimeMillis() - threadLocal.get()) / 1000;
     }
 
 }

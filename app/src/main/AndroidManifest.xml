@@ -4,24 +4,89 @@
 
     <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
-    <application
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <application android:name=".MyApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
-            android:name=".SettingsActivity"
-            android:label="@string/app_name">
+            android:name="com.example.lixy.MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".notification.NotificationActivity"
+            android:label="NotificationActivity"/>
+        <activity android:name=".activity.HandlerDemoActivity"
+            android:label="HandlerDemoActivity"/>
+        <activity android:name=".sqlite.SqlActivity"
+            android:label="SqlActivity"/>
+        <activity android:name=".activity.IntentServiceActivity"
+            android:label="IntentServiceActivity"/>
+        <activity android:name=".activity.FragmentDemoActivity"
+            android:label="FragmentDemoActivity"/>
+        <activity android:name=".activity.ViewDemoActivity"
+            android:process="mine.second.process" />
+        <activity android:name=".activity.AIDLClientActivity" />
+        <activity android:name=".databinding.DatabindingActivity">
+            <intent-filter>
+                <action android:name="com.example.lixy.myapplication.Data"></action>
+                <category android:name="android.intent.category.DEFAULT"></category>
+                <data android:host="${applicationId}"
+                    android:scheme="xxx"
+                    android:port="123"
+                    android:path="/user"></data>
+            </intent-filter>
+        </activity>
+
         <receiver android:name=".MyBroadCast">
             <intent-filter >
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+
+        <service android:name=".activity.IntentServiceActivity$MyIntentService"></service>
+
+        <service android:name=".activity.AIDLService"
+            android:process=":aidl"
+            android:exported="true">
+            <intent-filter >
+                <action android:name="com.example.lixy.aidl"></action>
+            </intent-filter>
+        </service>
+
+        <service
+            android:name=".notification.NotificationMonitor"
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE" >
+            <intent-filter>
+                <action android:name="android.service.notification.NotificationListenerService" />
+            </intent-filter>
+        </service>
+        
+        <provider
+            android:authorities="com.bcjm.demo.im"
+            android:name=".sqlite.StudentContentProvider"
+            android:exported="false"></provider>
+
+        <receiver android:name=".activity.HandlerDemoActivity$FirstReciver">
+            <intent-filter android:priority="2">
+                <action android:name="com.bcjm.reciver"></action>
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".activity.HandlerDemoActivity$SecondReciver">
+            <intent-filter android:priority="1">
+                <action android:name="com.bcjm.reciver"></action>
             </intent-filter>
         </receiver>
     </application>

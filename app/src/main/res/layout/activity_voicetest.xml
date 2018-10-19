@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp">
+
+    <Button android:id="@+id/btn_amr_local"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="AMR本地语音播放"/>
+
+    <Button android:id="@+id/btn_amr_net"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="AMR网络语音播放"/>
+
+    <Button android:id="@+id/btn_mp3_local"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="MP3本地语音播放"/>
+
+    <Button android:id="@+id/btn_mp3_net"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="MP3网络语音播放"/>
+
+</LinearLayout>
